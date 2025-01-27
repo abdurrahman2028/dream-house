@@ -1,8 +1,12 @@
 import { Link, NavLink } from "react-router-dom";
 import logo from "../../assets/pngwing.png";
 import "./Header.css";
+import { useContext } from "react";
+import { authContext } from "../../Authentication/Provider/AuthProvider";
+import userLogo from "../../assets/User-Profile.png";
 
 const Header = () => {
+  const { user, logout } = useContext(authContext);
   const list = (
     <>
       <li>
@@ -86,24 +90,29 @@ const Header = () => {
               {list}
             </ul>
           </div>
-          <img className="w-22" src={logo} alt="" />
+          <Link to="/">
+            <img className="w-22" src={logo} alt="" />
+          </Link>
         </div>
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal px-1 gap-7 ">{list}</ul>
         </div>
         <div className="navbar-end gap-5">
-          <NavLink to="/login" id="nav-link" className="btn">Log in</NavLink>
-          <div className="dropdown dropdown-end">
+          <NavLink
+            to="/login"
+            id="nav-link"
+            className={`${user && "hidden"} btn`}
+          >
+            Log in
+          </NavLink>
+          <div className={`${user || "hidden"} dropdown dropdown-end`}>
             <div
               tabIndex={0}
               role="button"
               className="btn btn-ghost btn-circle avatar"
             >
               <div className="w-40 rounded-full">
-                <img
-                  alt="Logo"
-                  src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp"
-                />
+                <img alt="Logo" src={user?.photoURL || userLogo} />
               </div>
             </div>
             <ul
@@ -116,7 +125,7 @@ const Header = () => {
                 </NavLink>
               </li>
               <li>
-                <a>Logout</a>
+                <button onClick={logout}>Logout</button>
               </li>
             </ul>
           </div>

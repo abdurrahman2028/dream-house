@@ -3,9 +3,26 @@ import Footer from "../../Shared/Footer/Footer";
 import Header from "../../Shared/Header/Header";
 import FooterImage from "../../assets/2.jpg";
 import img1 from "../../assets/1.jpg";
-import user from "../../assets/User-Profile.png";
+import userLogo from "../../assets/User-Profile.png";
+import { VscVmActive } from "react-icons/vsc";
+import { useContext } from "react";
+import { authContext } from "../../Authentication/Provider/AuthProvider";
+import { updateProfile } from "firebase/auth";
+import { useNavigate } from "react-router-dom";
 
 const Profile = () => {
+  const { user } = useContext(authContext);
+  const nevigate = useNavigate();
+  user ? user : nevigate("/login")
+  const profileUpdated = (e) => {
+    e.preventDefault();
+    const name = e.target.name.value;
+    const photo = e.target.photo.value;
+    updateProfile(user, {
+      displayName: name,
+      photoURL: photo,
+    }).then(() => nevigate("/profile"));
+  };
   return (
     <div>
       <div className="fixed top-0 w-full z-10">
@@ -13,64 +30,61 @@ const Profile = () => {
       </div>
 
       <div className="max-w-4xl mx-auto bg-white py-40 rounded-lg px-10">
-        <div className="flex items-center mb-6">
-          <img src={user} alt="Profile" className="w-36 h-36 rounded-lg mr-6" />
+        <div className="flex md:flex-row flex-col gap-5 md:gap-0 items-center mb-6">
+          <img
+            src={user?.photoURL || userLogo}
+            alt="Profile"
+            className="w-36 h-36 rounded-lg mr-6"
+          />
           <div className="flex flex-col justify-center">
             <h2 className="text-2xl font-bold tracking-0 leading-none">
-              Unknown
+              {user?.displayName || "Unknown"}
             </h2>
-            <p className="text-gray-500 tracking-0 leading-none">
-              <span className="text-green-700 text-5xl tracking-0 leading-none">
-                .
-              </span>
+            <p className="text-gray-500 tracking-0 leading-none flex gap-2 pt-2">
+              <VscVmActive />
               Active
             </p>
           </div>
-          <div className="ml-auto text-right">
+          <div className="ml-auto text-right md:block hidden">
             <span className="bg-gray-200 text-gray-800 text-sm font-semibold px-2 py-1 rounded">
               user
             </span>
             <p className="text-gray-500 text-sm">
-              Today {moment().format("D MMMM YYYY")}
+              Today, {moment().format("D MMMM YYYY")}
             </p>
           </div>
         </div>
-        <div className="flex items-center gap-20">
-          <div className="flex flex-col w-[50%] gap-6">
+
+        <div className="flex items-center justify-center md:justify-start gap-20">
+          <form
+            onSubmit={profileUpdated}
+            className="flex flex-col w-[50%] gap-6"
+          >
             <div>
               <label className="block text-gray-700">User Name</label>
-              <input
-                type="text"
-                className="w-full mt-1 p-2 border rounded"
-                placeholder="Nayeem"
-              />
+              <InputBox type="text" name="name" placeholder="Nayeem" />
             </div>
             <div>
               <label className="block text-gray-700">Photo Url</label>
-              <input
+              <InputBox
                 type="text"
-                className="w-full mt-1 p-2 border rounded"
-                placeholder="www.photo.url"
+                name="photo"
+                placeholder="www.my-photo.jpg"
               />
             </div>
-          </div>
-          <div className="">
-            <h2
-              className="cursor-crosshair text-5xl text-zinc-200 border p-10 mt-8 bg-cover bg-no-repeat lg:bg-[center_top_-3rem]"
-              style={{
-                backgroundImage: `url(${img1})`,
-              }}
-            >
-              Dream House
-            </h2>
-          </div>
+            <div className="w-full">
+              <input
+                type="submit"
+                value="Save Changes"
+                className="text-right px-14 cursor-pointer rounded-md border border-primary bg-zinc-800 py-3 text-base font-medium text-white transition hover:bg-opacity-90"
+              />
+            </div>
+          </form>
+
+          <div className="flex flex-col w-[40%] gap-6"></div>
         </div>
 
-        <div className="mt-6 text-left">
-          <button className="px-6 py-2 bg-blue-500 text-white rounded-lg">
-            Save Changes
-          </button>
-        </div>
+        <div className="mt-6 text-left"></div>
       </div>
 
       <div className="">
@@ -91,3 +105,16 @@ const Profile = () => {
 };
 
 export default Profile;
+
+const InputBox = ({ type, placeholder, name }) => {
+  return (
+    <div className="mt-1">
+      <input
+        type={type}
+        placeholder={placeholder}
+        name={name}
+        className="w-full rounded-md border border-stroke bg-transparent px-5 py-2 text-base text-body-color outline-none focus:border-primary focus-visible:shadow-none dark:border-dark-3 dark:text-white"
+      />
+    </div>
+  );
+};

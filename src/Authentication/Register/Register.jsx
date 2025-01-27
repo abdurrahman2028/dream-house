@@ -1,10 +1,29 @@
-import { FaFacebook, FaGithub, FaGoogle } from "react-icons/fa";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Footer from "../../Shared/Footer/Footer";
 import FooterImage from "../../assets/3.jpg";
 import Header from "../../Shared/Header/Header";
+import { useContext } from "react";
+import { authContext } from "../Provider/AuthProvider";
+import { updateProfile } from "firebase/auth";
 
 const Register = () => {
+  const { register } = useContext(authContext);
+  const nevigate = useNavigate();
+  const handleregister = (e) => {
+    e.preventDefault();
+    const name = e.target.name.value;
+    const photo = e.target.photo.value;
+    const email = e.target.email.value;
+    const password = e.target.password.value;
+    register(email, password).then((res) => {
+      nevigate("/login");
+      updateProfile(res.user, {
+        displayName: name,
+        photoURL: photo,
+      });
+      console.log("Register With Email : ", res);
+    });
+  };
   return (
     <div>
       <div className="fixed top-0 w-full z-10">
@@ -25,7 +44,7 @@ const Register = () => {
                     </h2>
                   </Link>
                 </div>
-                <form>
+                <form onSubmit={handleregister}>
                   <InputBox type="text" name="name" placeholder="User Name" />
                   <InputBox type="text" name="photo" placeholder="Photo Url" />
                   <InputBox type="email" name="email" placeholder="Email" />

@@ -1,10 +1,24 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Footer from "../../Shared/Footer/Footer";
 import Header from "../../Shared/Header/Header";
 import FooterImage from "../../assets/2.jpg";
 import { FaGithub, FaGoogle, FaFacebook } from "react-icons/fa";
+import { authContext } from "../Provider/AuthProvider";
+import { useContext } from "react";
 
 const Login = () => {
+  const { loginwithgoogle, loginwithgithub, loginwithfacebook, login } = useContext(authContext);
+  const nevigate = useNavigate();
+  const handlelogin = (e) => {
+    e.preventDefault();
+    const form = new FormData(e.currentTarget);
+    const email = form.get("email");
+    const password = form.get("password");
+    login(email, password).then((res) => {
+      nevigate("/");
+      console.log("Login With Email : ", res);
+    });
+  };
   return (
     <div>
       <div className="fixed top-0 w-full z-10">
@@ -25,7 +39,7 @@ const Login = () => {
                     </h2>
                   </Link>
                 </div>
-                <form>
+                <form onSubmit={handlelogin}>
                   <InputBox type="email" name="email" placeholder="Email" />
                   <InputBox
                     type="password"
@@ -44,29 +58,29 @@ const Login = () => {
                   Connect With
                 </p>
                 <ul className="-mx-2 mb-12 flex justify-between">
-                  <li className="w-full px-2">
-                    <a
-                      href="/#"
+                  <li className="cursor-pointer w-full px-2">
+                    <div
+                      onClick={loginwithfacebook}
                       className="flex h-11 items-center justify-center rounded-md bg-[#4064AC] hover:bg-opacity-90"
                     >
                       <FaFacebook className="text-xl text-zinc-200" />
-                    </a>
+                    </div>
                   </li>
-                  <li className="w-full px-2">
-                    <a
-                      href="/#"
+                  <li className="cursor-pointer w-full px-2">
+                    <div
+                      onClick={loginwithgithub}
                       className="flex h-11 items-center justify-center rounded-md bg-neutral hover:bg-opacity-90"
                     >
                       <FaGithub className="text-xl text-zinc-200" />
-                    </a>
+                    </div>
                   </li>
-                  <li className="w-full px-2">
-                    <a
-                      href="/#"
+                  <li className="cursor-pointer w-full px-2">
+                    <div
+                      onClick={loginwithgoogle}
                       className="flex h-11 items-center justify-center rounded-md bg-[#D64937] hover:bg-opacity-90"
                     >
                       <FaGoogle className="text-xl text-zinc-200" />
-                    </a>
+                    </div>
                   </li>
                 </ul>
                 <p className="text-base text-body-color dark:text-dark-6">
@@ -299,7 +313,7 @@ const Login = () => {
           </div>
         </div>
       </section>
-      
+
       <div className="">
         <div
           className="relative bg-cover bg-no-repeat lg:bg-[center_top_-22rem]"

@@ -94,7 +94,7 @@ const Featured = () => {
 
       <div className="">
         <div
-          className="relative bg-cover bg-no-repeat lg:bg-[center_top_-22rem]"
+          className="relative bg-cover bg-no-repeat lg:bg-[center_top_-30rem]"
           style={{
             backgroundImage: `url(${FooterImage})`,
           }}

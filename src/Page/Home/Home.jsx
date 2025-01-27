@@ -93,7 +93,7 @@ const Home = () => {
       <div className=" lg:px-10 grid lg:grid-cols-3 py-5">
         <div className="flex flex-col justify-center items-center py-5 gap-5 lg:border-r-1 sm:border-b-1 lg:border-b-0 border-zinc-300 border-dashed">
           <h1 className="text-[100px] tracking-tight leading-none">
-            <span ref={counter1}>20</span>K <sup className="text-7xl">+</sup>
+            <span ref={counter1}>200</span>K <sup className="text-7xl">+</sup>
           </h1>
           <div className="flex flex-col items-center">
             <h4>Lorem ipsum dolor sit amet, consectetur</h4>
