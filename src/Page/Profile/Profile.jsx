@@ -1,6 +1,8 @@
+import moment from "moment";
 import Footer from "../../Shared/Footer/Footer";
 import Header from "../../Shared/Header/Header";
 import FooterImage from "../../assets/2.jpg";
+import user from "../../assets/User-Profile.png";
 
 const Profile = () => {
   return (
@@ -11,105 +13,52 @@ const Profile = () => {
 
       <div className="max-w-4xl mx-auto bg-white py-40 rounded-lg">
         <div className="flex items-center mb-6">
-          <img
-            src="https://placehold.co/140x140"
-            alt="Profile"
-            className="w-36 h-36 rounded-lg mr-6"
-          />
-          <div>
-            <h2 className="text-2xl font-bold">John Smith</h2>
-            <p className="text-gray-600">@johnny.s</p>
-            <p className="text-gray-500">Last seen 2 hours ago</p>
-            <button className="mt-4 px-4 py-2 bg-blue-500 text-white rounded-lg">
-              <i className="fas fa-camera mr-2"></i> Change Photo
-            </button>
+          <img src={user} alt="Profile" className="w-36 h-36 rounded-lg mr-6" />
+          <div className="flex flex-col justify-center">
+            <h2 className="text-2xl font-bold tracking-0 leading-none">
+              Unknown
+            </h2>
+            <p className="text-gray-500 tracking-0 leading-none">
+              <span className="text-green-700 text-5xl tracking-0 leading-none">
+                .
+              </span>
+              Active
+            </p>
           </div>
           <div className="ml-auto text-right">
-            <span className="bg-gray-200 text-gray-800 text-xs font-semibold px-2 py-1 rounded">
-              administrator
+            <span className="bg-gray-200 text-gray-800 text-sm font-semibold px-2 py-1 rounded">
+              user
             </span>
-            <p className="text-gray-500 text-sm">Joined 09 Dec 2017</p>
+            <p className="text-gray-500 text-sm">
+              Today {moment().format("D MMMM YYYY")}
+            </p>
+          </div>
+        </div>
+        <div className="flex items-center gap-20">
+          <div className="flex flex-col w-[50%] gap-6">
+            <div>
+              <label className="block text-gray-700">User Name</label>
+              <input
+                type="text"
+                className="w-full mt-1 p-2 border rounded"
+                placeholder="Nayeem"
+              />
+            </div>
+            <div>
+              <label className="block text-gray-700">Photo Url</label>
+              <input
+                type="text"
+                className="w-full mt-1 p-2 border rounded"
+                placeholder="www.photo.url"
+              />
+            </div>
+          </div>
+          <div className="">
+            <h2 className="text-5xl border p-10 mt-8">Dream House</h2>
           </div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          <div>
-            <label className="block text-gray-700">Full Name</label>
-            <input
-              type="text"
-              className="w-full mt-1 p-2 border rounded"
-              placeholder="John Smith"
-            />
-          </div>
-          <div>
-            <label className="block text-gray-700">Username</label>
-            <input
-              type="text"
-              className="w-full mt-1 p-2 border rounded"
-              placeholder="johnny.s"
-            />
-          </div>
-          <div className="col-span-2">
-            <label className="block text-gray-700">Email</label>
-            <input
-              type="email"
-              className="w-full mt-1 p-2 border rounded"
-              value="user@example.com"
-            />
-          </div>
-          <div className="col-span-2">
-            <label className="block text-gray-700">About</label>
-            <textarea className="w-full mt-1 p-2 border rounded" rows="4">
-              My Bio
-            </textarea>
-          </div>
-        </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6">
-          <div>
-            <h3 className="text-lg font-semibold mb-2">Change Password</h3>
-            <label className="block text-gray-700">Current Password</label>
-            <input
-              type="password"
-              className="w-full mt-1 p-2 border rounded"
-              value="******"
-            />
-            <label className="block text-gray-700 mt-4">New Password</label>
-            <input
-              type="password"
-              className="w-full mt-1 p-2 border rounded"
-              value="******"
-            />
-            <label className="block text-gray-700 mt-4">Confirm Password</label>
-            <input
-              type="password"
-              className="w-full mt-1 p-2 border rounded"
-              value="******"
-            />
-          </div>
-          <div>
-            <h3 className="text-lg font-semibold mb-2">Keeping in Touch</h3>
-            <label className="block text-gray-700">Email Notifications</label>
-            <div className="mt-2">
-              <label className="inline-flex items-center">
-                <input type="checkbox" className="form-checkbox" checked />
-                <span className="ml-2">Blog posts</span>
-              </label>
-            </div>
-            <div className="mt-2">
-              <label className="inline-flex items-center">
-                <input type="checkbox" className="form-checkbox" checked />
-                <span className="ml-2">Newsletter</span>
-              </label>
-            </div>
-            <div className="mt-2">
-              <label className="inline-flex items-center">
-                <input type="checkbox" className="form-checkbox" checked />
-                <span className="ml-2">Personal Offers</span>
-              </label>
-            </div>
-          </div>
-        </div>
-        <div className="mt-6 text-right">
+        <div className="mt-6 text-left">
           <button className="px-6 py-2 bg-blue-500 text-white rounded-lg">
             Save Changes
           </button>
