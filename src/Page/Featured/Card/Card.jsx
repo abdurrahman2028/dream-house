@@ -6,12 +6,11 @@ import {
   FaDollarSign,
   FaExternalLinkSquareAlt,
 } from "react-icons/fa";
-import { GiHighTide } from "react-icons/gi";
 
 const Card = ({ data }) => {
   return (
     <>
-      <Link to="/">
+      <Link to="/details">
         <div className="relative cursor-pointer lg:w-[330px] md:w-[320px] w-[300px] pb-2 bg-zinc-200 text-zinc-900 rounded-[10px] overflow-hidden flex flex-col gap-5">
           <div className="">
             <img src={data.img} alt="" />
@@ -38,17 +37,17 @@ const Card = ({ data }) => {
                   </div>
                   <div className="flex items-center gap-1">
                     <FaExternalLinkSquareAlt />
-                    <p>sqft</p>
+                    <p>{data.items.sqft}</p>
                   </div>
                 </div>
                 <div className="flex items-center gap-5">
                   <div className="flex items-center gap-1 text-center">
                     <FaBed />
-                    <h4 className="">3</h4>
+                    <h4 className="">{data.items.bed}</h4>
                   </div>
                   <div className="flex gap-1">
                     <FaBath />
-                    <h4 className="">2</h4>
+                    <h4 className="">{data.items.bath}</h4>
                   </div>
                 </div>
               </div>

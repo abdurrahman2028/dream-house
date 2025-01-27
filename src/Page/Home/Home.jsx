@@ -39,26 +39,32 @@ const Home = () => {
         <div className="fixed w-full z-10">
           <Header></Header>
         </div>
-        <div className="lg:px-52 lg:pt-48 md:px-20 md:pt-20 px-15 pt-30 text-zinc-100 font-semibold flex flex-col gap-3">
-          <h5 className="lg:text-3xl md:text-xl text-lg">Real estate for sale</h5>
-          <h1 className="lg:text-7xl md:text-5xl text-4xl">Find your</h1>
-          <h1 className="lg:text-7xl md:text-5xl text-4xl">next dream home</h1>
-        </div>
-        <div className="lg:px-52 lg:pt-96 md:px-20 md:pt-20 px-15 pt-30 text-zinc-100 flex justify-between gap-3">
-          <div className="">
-            <h6 className="text-base">
-              Where every corner whispers serenity. Our homes are
-            </h6>
-            <h6 className="text-base">
-              more than structures, they are havens designed to
-            </h6>
-            <h6 className="text-base">
-              provide a refuge from the chaos of the world.
-            </h6>
+        <div className="flex flex-col justify-between h-full">
+          <div className="lg:px-52 lg:pt-48 md:px-20 md:pt-50 px-15 pt-40 text-zinc-100 font-semibold flex flex-col gap-3">
+            <h5 className="lg:text-3xl md:text-xl text-lg">
+              Real estate for sale
+            </h5>
+            <h1 className="lg:text-7xl md:text-5xl text-4xl">Find your</h1>
+            <h1 className="lg:text-7xl md:text-5xl text-4xl">
+              next dream home
+            </h1>
           </div>
-          <div className="text-end flex flex-col gap-1">
-            <h6 className="text-">Poqutot Green Canyon</h6>
-            <h2 className="text-4xl">$700.99/day</h2>
+          <div className="lg:px-52 lg:pt-96 md:px-20 md:pt-20 px-15 pb-30 text-zinc-100 flex items-end justify-between gap-3">
+            <div className="">
+              <h6 className="text-base">
+                Where every corner whispers serenity. Our homes are
+              </h6>
+              <h6 className="text-base">
+                more than structures, they are havens designed to
+              </h6>
+              <h6 className="text-base">
+                provide a refuge from the chaos of the world.
+              </h6>
+            </div>
+            <div className="text-end flex flex-col gap-1">
+              <h6 className="text-">Poqutot Green Canyon</h6>
+              <h2 className="text-4xl">$700.99/day</h2>
+            </div>
           </div>
         </div>
         <div className="absolute bottom-0 blur-lg w-full h-10 bg-zinc-300/50"></div>
@@ -84,35 +90,35 @@ const Home = () => {
         </div>
       </div>
 
-      <div className="h-60 lg:px-10 grid lg:grid-cols-3 py-5">
-      <div className="flex flex-col justify-center items-center py-5 gap-5 lg:border-r-1 sm:border-b-1 lg:border-b-0 border-zinc-300 border-dashed">
-        <h1 className="text-[100px] tracking-tight leading-none">
-          <span ref={counter1}>20</span>K <sup className="text-7xl">+</sup>
-        </h1>
-        <div className="flex flex-col items-center">
-          <h4>Lorem ipsum dolor sit amet, consectetur</h4>
-          <h4>adipiscing elit</h4>
+      <div className=" lg:px-10 grid lg:grid-cols-3 py-5">
+        <div className="flex flex-col justify-center items-center py-5 gap-5 lg:border-r-1 sm:border-b-1 lg:border-b-0 border-zinc-300 border-dashed">
+          <h1 className="text-[100px] tracking-tight leading-none">
+            <span ref={counter1}>20</span>K <sup className="text-7xl">+</sup>
+          </h1>
+          <div className="flex flex-col items-center">
+            <h4>Lorem ipsum dolor sit amet, consectetur</h4>
+            <h4>adipiscing elit</h4>
+          </div>
+        </div>
+        <div className="flex flex-col justify-center items-center py-5 gap-5 lg:border-r-1 sm:border-b-1 lg:border-b-0 border-zinc-300 border-dashed">
+          <h1 className="text-[100px] tracking-tight leading-none">
+            <span ref={counter2}>98</span> <sup className="text-6xl">%</sup>
+          </h1>
+          <div className="flex flex-col items-center">
+            <h4>Donec maximus ac est non</h4>
+            <h4>dignissim nomentio</h4>
+          </div>
+        </div>
+        <div className="flex flex-col justify-center items-center py-5 gap-5">
+          <h1 className="text-[100px] tracking-tight leading-none">
+            <span ref={counter3}>85</span> <sup className="text-6xl">%</sup>
+          </h1>
+          <div className="flex flex-col items-center">
+            <h4>Vestibulum gravida ullamcorper</h4>
+            <h4>venenatinom jonerk</h4>
+          </div>
         </div>
       </div>
-      <div className="flex flex-col justify-center items-center py-5 gap-5 lg:border-r-1 sm:border-b-1 lg:border-b-0 border-zinc-300 border-dashed">
-        <h1 className="text-[100px] tracking-tight leading-none">
-          <span ref={counter2}>98</span> <sup className="text-6xl">%</sup>
-        </h1>
-        <div className="flex flex-col items-center">
-          <h4>Donec maximus ac est non</h4>
-          <h4>dignissim nomentio</h4>
-        </div>
-      </div>
-      <div className="flex flex-col justify-center items-center py-5 gap-5">
-        <h1 className="text-[100px] tracking-tight leading-none">
-          <span ref={counter3}>85</span> <sup className="text-6xl">%</sup>
-        </h1>
-        <div className="flex flex-col items-center">
-          <h4>Vestibulum gravida ullamcorper</h4>
-          <h4>venenatinom jonerk</h4>
-        </div>
-      </div>
-    </div>
 
       <section className="dark:bg-gray-100 dark:text-gray-800">
         <div className="container flex flex-col justify-center px-4 py-8 mx-auto md:p-8">
@@ -174,7 +180,7 @@ const Home = () => {
           }}
         >
           <div className="absolute bottom-0 blur-[25px] w-full h-80 bg-zinc-400/50 opacity-70"></div>
-          <div className="relative bg-zinc-200/35 h-full">
+          <div className="relative bg-zinc-200/35 h-full px-10">
             <Footer></Footer>
           </div>
         </div>

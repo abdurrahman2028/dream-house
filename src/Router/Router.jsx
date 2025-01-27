@@ -9,6 +9,7 @@ import Contact from "../Page/Contact/Contact";
 import Login from "../Authentication/Login/Login";
 import Register from "../Authentication/Register/Register";
 import Profile from "../Page/Profile/Profile";
+import Details from "../Page/Featured/Details/Details";
 
 const Router = () => {
   const router = createBrowserRouter([
@@ -49,6 +50,10 @@ const Router = () => {
         {
           path: "/profile",
           element: <Profile></Profile>,
+        },
+        {
+          path: "/details",
+          element: <Details></Details>,
         },
       ]
     }

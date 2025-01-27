@@ -17,11 +17,11 @@ const Login = () => {
               <div className="relative mx-auto max-w-[525px] overflow-hidden rounded-lg bg-white px-10 py-16 text-center dark:bg-dark-2 sm:px-12 md:px-[60px]">
                 <div className="mb-10 text-center md:mb-16">
                   <Link
-                    to="/"
+                    to="/login"
                     className="mx-auto inline-block max-w-[200px] text-zinc-800"
                   >
                     <h2 className="text-[30px]  leading-none font-semibold">
-                      Dream House
+                      Sign In
                     </h2>
                   </Link>
                 </div>
@@ -299,16 +299,16 @@ const Login = () => {
           </div>
         </div>
       </section>
+      
       <div className="">
         <div
-          className="relative bg-cover bg-no-repeat lg:bg-[center_top_-40rem]"
+          className="relative bg-cover bg-no-repeat lg:bg-[center_top_-22rem]"
           style={{
             backgroundImage: `url(${FooterImage})`,
           }}
         >
-          <div className="absolute bottom-0 blur-[25px] w-full h-80 bg-zinc-400/50 opacity-80"></div>
-          <div className="absolute bottom-0 w-full h-72 bg-zinc-200/50 opacity-20"></div>
-          <div className="relative bg-zinc-200/45 h-full  px-52">
+          <div className="absolute bottom-0 blur-[25px] w-full h-80 bg-zinc-400/50 opacity-70"></div>
+          <div className="relative bg-zinc-200/35 h-full px-10">
             <Footer></Footer>
           </div>
         </div>

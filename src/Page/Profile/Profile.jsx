@@ -2,6 +2,7 @@ import moment from "moment";
 import Footer from "../../Shared/Footer/Footer";
 import Header from "../../Shared/Header/Header";
 import FooterImage from "../../assets/2.jpg";
+import img1 from "../../assets/1.jpg";
 import user from "../../assets/User-Profile.png";
 
 const Profile = () => {
@@ -11,7 +12,7 @@ const Profile = () => {
         <Header></Header>
       </div>
 
-      <div className="max-w-4xl mx-auto bg-white py-40 rounded-lg">
+      <div className="max-w-4xl mx-auto bg-white py-40 rounded-lg px-10">
         <div className="flex items-center mb-6">
           <img src={user} alt="Profile" className="w-36 h-36 rounded-lg mr-6" />
           <div className="flex flex-col justify-center">
@@ -54,7 +55,14 @@ const Profile = () => {
             </div>
           </div>
           <div className="">
-            <h2 className="text-5xl border p-10 mt-8">Dream House</h2>
+            <h2
+              className="cursor-crosshair text-5xl text-zinc-200 border p-10 mt-8 bg-cover bg-no-repeat lg:bg-[center_top_-3rem]"
+              style={{
+                backgroundImage: `url(${img1})`,
+              }}
+            >
+              Dream House
+            </h2>
           </div>
         </div>
 
@@ -65,16 +73,15 @@ const Profile = () => {
         </div>
       </div>
 
-      <div className="w-full">
+      <div className="">
         <div
-          className="relative bg-cover bg-no-repeat lg:bg-[center_top_-40rem]"
+          className="relative bg-cover bg-no-repeat lg:bg-[center_top_-22rem]"
           style={{
             backgroundImage: `url(${FooterImage})`,
           }}
         >
-          <div className="absolute bottom-0 blur-[25px] w-full h-80 bg-zinc-400/50 opacity-80"></div>
-          <div className="absolute bottom-0 w-full h-72 bg-zinc-200/50 opacity-20"></div>
-          <div className="relative bg-zinc-200/45 h-full  px-52">
+          <div className="absolute bottom-0 blur-[25px] w-full h-80 bg-zinc-400/50 opacity-70"></div>
+          <div className="relative bg-zinc-200/35 h-full px-10">
             <Footer></Footer>
           </div>
         </div>

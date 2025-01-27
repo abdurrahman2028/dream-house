@@ -17,11 +17,11 @@ const Register = () => {
               <div className="relative mx-auto max-w-[525px] overflow-hidden rounded-lg bg-white px-10 py-16 text-center dark:bg-dark-2 sm:px-12 md:px-[60px]">
                 <div className="mb-10 text-center md:mb-16">
                   <Link
-                    to='/'
+                    to="/register"
                     className="mx-auto inline-block max-w-[200px] text-zinc-800"
                   >
                     <h2 className="text-[30px]  leading-none font-semibold">
-                      Dream House
+                      Sign Up
                     </h2>
                   </Link>
                 </div>
@@ -29,11 +29,15 @@ const Register = () => {
                   <InputBox type="text" name="name" placeholder="User Name" />
                   <InputBox type="text" name="photo" placeholder="Photo Url" />
                   <InputBox type="email" name="email" placeholder="Email" />
-                  <InputBox type="password" name="password" placeholder="Password" />
+                  <InputBox
+                    type="password"
+                    name="password"
+                    placeholder="Password"
+                  />
                   <div className="mb-10">
                     <input
                       type="submit"
-                      value="Sign In"
+                      value="Sign Up"
                       className="w-full cursor-pointer rounded-md border border-primary bg-zinc-800 px-5 py-3 text-base font-medium text-white transition hover:bg-opacity-90"
                     />
                   </div>
@@ -46,7 +50,7 @@ const Register = () => {
                 </p>
 
                 <div>
-                  <span className="absolute right-1 top-1">
+                  <span className="absolute left-1 top-1">
                     <svg
                       width="40"
                       height="40"
@@ -168,7 +172,7 @@ const Register = () => {
                       />
                     </svg>
                   </span>
-                  <span className="absolute bottom-1 left-1">
+                  <span className="absolute bottom-1 right-1">
                     <svg
                       width="29"
                       height="40"
@@ -271,14 +275,13 @@ const Register = () => {
 
       <div className="">
         <div
-          className="relative bg-cover bg-no-repeat lg:bg-[center_top_-35rem]"
+          className="relative bg-cover bg-no-repeat lg:bg-[center_top_-22rem]"
           style={{
             backgroundImage: `url(${FooterImage})`,
           }}
         >
-          <div className="absolute bottom-0 blur-[25px] w-full h-80 bg-zinc-400/50 opacity-80"></div>
-          <div className="absolute bottom-0 w-full h-72 bg-zinc-200/50 opacity-20"></div>
-          <div className="relative bg-zinc-200/45 h-full  px-52">
+          <div className="absolute bottom-0 blur-[25px] w-full h-80 bg-zinc-400/50 opacity-70"></div>
+          <div className="relative bg-zinc-200/35 h-full px-10">
             <Footer></Footer>
           </div>
         </div>

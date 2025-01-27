@@ -3,6 +3,8 @@ import Header from "../../Shared/Header/Header";
 import Slider1 from "../../assets/Slider1.jpg";
 import Slider2 from "../../assets/Slider2.jpg";
 import Slider3 from "../../assets/Slider3.jpg";
+import Slider4 from "../../assets/3.jpg";
+import Slider5 from "../../assets/2.jpg";
 import moment from "moment/moment";
 import Footer from "../../Shared/Footer/Footer";
 import FooterImage from "../../assets/Slider1.jpg";
@@ -18,6 +20,7 @@ const Featured = () => {
       price: "4,600",
       location: "Dhaka, Capital of Bangladesh",
       close: true,
+      items: { bed: 3, bath: 2, sqft: "1,634" },
       tag: { isOpen: true, title: "Download Now!", color: "blue" },
     },
     {
@@ -29,6 +32,8 @@ const Featured = () => {
       price: "23,860",
       location: "Barishal, City in Bangladesh",
       close: true,
+      items: { bed: 2, bath: 1, sqft: "986" },
+
       tag: { isOpen: true, title: "Download Now!", color: "green" },
     },
     {
@@ -40,28 +45,31 @@ const Featured = () => {
       price: "17,550",
       location: "Dhaka, Capital of Bangladesh",
       close: true,
+      items: { bed: 1, bath: 0, sqft: "486" },
       tag: { isOpen: true, title: "Download Now!", color: "blue" },
     },
     {
       id: 4,
-      img: Slider3,
+      img: Slider4,
       title: "Docs is a web-based application",
       description:
         "Google Docs is a web-based application. It can be accessed with a personal Google account.",
-      price: "17,550",
+      price: "39,573",
       location: "Barishal, City in Bangladesh",
       close: true,
+      items: { bed: 5, bath: 3, sqft: "3,286" },
       tag: { isOpen: true, title: "Download Now!", color: "blue" },
     },
     {
       id: 5,
-      img: Slider3,
+      img: Slider5,
       title: "Docs is a web-based application",
       description:
         "Google Docs is a web-based application. It can be accessed with a personal Google account.",
-      price: "17,550",
+      price: "12,530",
       location: "Dhaka, Capital of Bangladesh",
       close: true,
+      items: { bed: 2, bath: 2, sqft: "1,422" },
       tag: { isOpen: true, title: "Download Now!", color: "blue" },
     },
   ];
@@ -72,7 +80,7 @@ const Featured = () => {
       </div>
       <div className="py-14">
         <div className="pt-24">
-          <h2 className="text-4xl text-center">Newest listings</h2>
+          <h2 className="text-4xl text-center">Featured Homes</h2>
           <h2 className="text-md text-center">
             {moment().format("MMMM Do YYYY, h:mm:ss a")}
           </h2>
@@ -86,14 +94,13 @@ const Featured = () => {
 
       <div className="">
         <div
-          className="relative bg-cover bg-no-repeat lg:bg-[center_top_-35rem]"
+          className="relative bg-cover bg-no-repeat lg:bg-[center_top_-22rem]"
           style={{
             backgroundImage: `url(${FooterImage})`,
           }}
         >
-          <div className="absolute bottom-0 blur-[25px] w-full h-80 bg-zinc-400/50 opacity-80"></div>
-          <div className="absolute bottom-0 w-full h-72 bg-zinc-200/50 opacity-20"></div>
-          <div className="relative bg-zinc-200/35 h-full  px-52">
+          <div className="absolute bottom-0 blur-[25px] w-full h-80 bg-zinc-400/50 opacity-70"></div>
+          <div className="relative bg-zinc-200/35 h-full px-10">
             <Footer></Footer>
           </div>
         </div>
