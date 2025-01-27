@@ -174,7 +174,7 @@ const Home = () => {
           }}
         >
           <div className="absolute bottom-0 blur-[25px] w-full h-80 bg-zinc-400/50 opacity-70"></div>
-          <div className="relative bg-zinc-200/20 h-full">
+          <div className="relative bg-zinc-200/35 h-full">
             <Footer></Footer>
           </div>
         </div>

@@ -14,6 +14,7 @@
     "firebase": "^11.2.0",
     "formik": "^2.4.6",
     "lodash": "^4.17.21",
+    "mdb-react-ui-kit": "^9.0.0",
     "moment": "^2.30.1",
     "motion": "^12.0.5",
     "react": "^18.3.1",

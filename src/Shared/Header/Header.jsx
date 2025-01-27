@@ -92,7 +92,7 @@ const Header = () => {
           <ul className="menu menu-horizontal px-1 gap-7 ">{list}</ul>
         </div>
         <div className="navbar-end gap-5">
-          <Link to="/login" className="btn">Log in</Link>
+          <NavLink to="/login" id="nav-link" className="btn">Log in</NavLink>
           <div className="dropdown dropdown-end">
             <div
               tabIndex={0}
