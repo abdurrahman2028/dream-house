@@ -24,6 +24,10 @@ const Router = () => {
           element: <Home></Home>,
         },
         {
+          path: "/details",
+          element: <Private><Details></Details></Private>,
+        },
+        {
           path: "/featured",
           element: <Featured></Featured>,
         },
@@ -46,10 +50,6 @@ const Router = () => {
         {
           path: "/profile",
           element: <Profile></Profile>,
-        },
-        {
-          path: "/details",
-          element: <Private><Details></Details></Private>,
         },
       ]
     }

@@ -27,11 +27,11 @@ const AuthProvider = ({ children }) => {
       .then((res) => console.log("Login With Facebook : ", res))
       .catch((err) => console.log("Facebook Login Error : ", err));
   };
-  const register = (email, password) => {
+  const userregister = (email, password) => {
     setLoading(true);
     return createUserWithEmailAndPassword(auth, email, password);
   };
-  const login = (email, password) => {
+  const userlogin = (email, password) => {
     setLoading(true);
     return signInWithEmailAndPassword(auth, email, password);
   };
@@ -53,8 +53,8 @@ const AuthProvider = ({ children }) => {
     loginwithgoogle,
     loginwithgithub,
     loginwithfacebook,
-    register,
-    login,
+    userregister,
+    userlogin,
     user,
     loading,
     logout

@@ -3,7 +3,6 @@ import Header from "../../Shared/Header/Header";
 import Slider1 from "../../assets/Slider1.jpg";
 import Slider2 from "../../assets/Slider2.jpg";
 import Slider3 from "../../assets/Slider3.jpg";
-import Slider4 from "../../assets/3.jpg";
 import Slider5 from "../../assets/2.jpg";
 import moment from "moment/moment";
 import Footer from "../../Shared/Footer/Footer";

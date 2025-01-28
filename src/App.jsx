@@ -1,6 +1,6 @@
 import { Outlet } from "react-router-dom";
 
-import { animate, useScroll, motion } from "framer-motion";
+import { useScroll, motion } from "framer-motion";
 
 export const App = () => {
   const { scrollYProgress } = useScroll();

@@ -7,7 +7,7 @@ import { authContext } from "../Provider/AuthProvider";
 import { useContext } from "react";
 
 const Login = () => {
-  const { loginwithgoogle, loginwithgithub, loginwithfacebook, login } = useContext(authContext);
+  const { loginwithgoogle, loginwithgithub, loginwithfacebook, userlogin} = useContext(authContext);
   const nevigate = useNavigate();
   const handlelogin = (e) => {
     e.preventDefault();
