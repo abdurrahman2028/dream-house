@@ -3,7 +3,7 @@ import HeroImage from "../../assets/Hero.jpg";
 import FooterImage from "../../assets/Footer.jpg";
 import Footer from "../../Shared/Footer/Footer";
 import { useEffect, useRef } from "react";
-import { animate, useScroll, motion } from "framer-motion";
+import { animate } from "framer-motion";
 
 const Home = () => {
   const counter1 = useRef(null);

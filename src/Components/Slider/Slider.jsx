@@ -2,13 +2,27 @@ import Slider1 from "../../assets/Slider1.jpg";
 import Slider2 from "../../assets/Slider2.jpg";
 import Slider3 from "../../assets/Slider3.jpg";
 
-import { Navigation, Pagination, Scrollbar, A11y, EffectFade } from 'swiper/modules';
+import {
+  FaBath,
+  FaBed,
+  FaWarehouse,
+  FaDollarSign,
+  FaExternalLinkSquareAlt,
+} from "react-icons/fa";
+
+import {
+  Navigation,
+  Pagination,
+  Scrollbar,
+  A11y,
+  EffectFade,
+} from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/swiper-bundle.css";
 
 const Slider = () => {
   return (
-    <div className="flex justify-center items-center w-full px-52 pt-10">
+    <div className="flex justify-center items-center w-full px-52 py-10">
       <Swiper
         modules={[Navigation, Pagination, Scrollbar, A11y, EffectFade]}
         effect="flip"
@@ -16,28 +30,46 @@ const Slider = () => {
         slidesPerView={1}
         navigation
         pagination={{ clickable: true }}
-        className="w-full flex justify-center items-center"
+        className="w-full h-[60vh] flex justify-center items-center"
       >
         <SwiperSlide className="flex justify-center items-center">
-          <img
-            className="flex items-center justify-center bg-center bg-cover w-[100%]"
-            src={Slider1}
-            alt=""
-          />
+          <div
+            className="relative bg-cover bg-center bg-no-repeat h-[100%]"
+            style={{
+              backgroundImage: `url(${Slider1})`,
+            }}
+          >
+            <div className="absolute bottom-5 right-5 bg-white p-3 flex items-center text-[25px] font-semibold leading-none">
+              <FaDollarSign />
+              <p className="">19,435</p>
+            </div>
+          </div>
         </SwiperSlide>
         <SwiperSlide className="flex justify-center items-center">
-          <img
-            className="bg-center bg- w-[100%]"
-            src={Slider2}
-            alt=""
-          />
+          <div
+            className="relative bg-cover bg-center bg-no-repeat h-[100%] py-20"
+            style={{
+              backgroundImage: `url(${Slider2})`,
+            }}
+          >
+            <div className="absolute bottom-5 right-5 bg-white p-3 flex items-center text-[25px] font-semibold leading-none">
+              <FaDollarSign />
+              <p className="">38,435</p>
+            </div>
+          </div>
         </SwiperSlide>
         <SwiperSlide className="flex justify-center items-center">
-          <img
-            className="bg-center bg-cover w-[100%]"
-            src={Slider3}
-            alt=""
-          />
+          <div
+            className="relative bg-cover bg-center bg-no-repeat h-[100%] py-20"
+            style={{
+              backgroundImage: `url(${Slider3})`,
+            }}
+          >
+            <div className="absolute bottom-5 right-5 bg-white p-3 flex items-center text-[25px] font-semibold leading-none">
+              <FaDollarSign />
+              <p className="">53,435</p>
+            </div>
+          </div>
         </SwiperSlide>
       </Swiper>
     </div>

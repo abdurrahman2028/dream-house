@@ -29,6 +29,7 @@ const Router = () => {
         },
         {
           path: "/featured",
+          
           element: <Featured></Featured>,
         },
         {
@@ -49,7 +50,7 @@ const Router = () => {
         },
         {
           path: "/profile",
-          element: <Profile></Profile>,
+          element: <Private><Profile></Profile></Private>,
         },
       ]
     }

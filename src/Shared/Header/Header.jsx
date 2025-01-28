@@ -81,44 +81,50 @@ const Header = () => {
             </ul>
           </div>
           <Link to="/">
-            <img className="w-22" src={logo} alt="" />
+            <img className="w-14" src={logo} alt="" />
           </Link>
         </div>
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal px-1 gap-7 ">{list}</ul>
         </div>
         <div className="navbar-end gap-5">
-          <NavLink
-            to="/login"
-            id="nav-link"
-            className={`${user && "hidden"} btn`}
-          >
-            Log in
-          </NavLink>
-          <div className={`${user || "hidden"} dropdown dropdown-end`}>
-            <div
-              tabIndex={0}
-              role="button"
-              className="btn btn-ghost btn-circle avatar"
-            >
-              <div className="w-40 rounded-full">
-                <img alt="Logo" src={user?.photoURL || userLogo} />
+          {user ? (
+            <div className={` dropdown dropdown-end`}>
+              <div
+                tabIndex={0}
+                role="button"
+                className="btn btn-ghost btn-circle avatar"
+              >
+                <div className="w-40 rounded-full">
+                  <img alt="Logo" src={user?.photoURL || userLogo} />
+                </div>
               </div>
+              <ul
+                tabIndex={0}
+                className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow"
+              >
+                <li>
+                  <NavLink to="/profile" className="justify-between">
+                    Profile
+                  </NavLink>
+                </li>
+                <li>
+                  <button onClick={logout}>Logout</button>
+                </li>
+              </ul>
             </div>
-            <ul
-              tabIndex={0}
-              className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow"
+          )
+          :
+          (
+            <NavLink
+              to="/login"
+              id="nav-link"
+              className={` btn`}
             >
-              <li>
-                <NavLink to="/profile" className="justify-between">
-                  Profile
-                </NavLink>
-              </li>
-              <li>
-                <button onClick={logout}>Logout</button>
-              </li>
-            </ul>
-          </div>
+              Log in
+            </NavLink>
+          )
+        }
         </div>
       </div>
     </>

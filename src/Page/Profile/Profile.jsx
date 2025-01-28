@@ -13,7 +13,6 @@ import { useNavigate } from "react-router-dom";
 const Profile = () => {
   const { user } = useContext(authContext);
   const nevigate = useNavigate();
-  user ? user : nevigate("/login")
   const profileUpdated = (e) => {
     e.preventDefault();
     const name = e.target.name.value;
@@ -21,7 +20,8 @@ const Profile = () => {
     updateProfile(user, {
       displayName: name,
       photoURL: photo,
-    }).then(() => nevigate("/profile"));
+    })
+    .then(() => nevigate("/profile"));
   };
   return (
     <div>

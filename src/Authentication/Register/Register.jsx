@@ -2,18 +2,20 @@ import { Link, useNavigate } from "react-router-dom";
 import Footer from "../../Shared/Footer/Footer";
 import FooterImage from "../../assets/3.jpg";
 import Header from "../../Shared/Header/Header";
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { authContext } from "../Provider/AuthProvider";
 import { updateProfile } from "firebase/auth";
 import { useForm } from "react-hook-form";
+import { Bounce, ToastContainer, toast } from "react-toastify";
 
 const Register = () => {
   const { userregister } = useContext(authContext);
-  const nevigate = useNavigate();
+  const navigate = useNavigate();
+
   const handleRegister = (data) => {
     const { name, photo, email, password } = data;
     userregister(email, password).then((res) => {
-      nevigate("/login");
+      navigate("/login");
       updateProfile(res.user, {
         displayName: name,
         photoURL: photo,
@@ -31,6 +33,7 @@ const Register = () => {
   const delay = (time) => {
     return new Promise((res, rej) => {
       setTimeout(() => {
+        navigate("/login");
         res();
       }, time * 1000);
     });
@@ -39,6 +42,22 @@ const Register = () => {
     await delay(3);
     console.log(data);
   };
+
+  useEffect(() => {
+    if (errors.name) {
+      toast.error(errors.name.message);
+    }
+    if (errors.photo) {
+      toast.error(errors.photo.message);
+    }
+    if (errors.email) {
+      toast.error(errors.email.message);
+    }
+    if (errors.password) {
+      toast.error(errors.password.message);
+    }
+  }, [errors.name, errors.email, errors.password]);
+
   return (
     <div>
       <div className="fixed top-0 w-full z-10">
@@ -66,98 +85,121 @@ const Register = () => {
                     </h1>
                   )}
                 </div>
-                  <form
-                    onSubmit={handleSubmit(handleRegister)}
-                    className="flex flex-col gap-3"
-                  >
-                    <div className="flex flex-col items-start">
-                      <input
-                        {...register("email", {
-                          required: {
-                            value: true,
-                            message: "Email is required.",
-                          },
-                        })}
-                        type="email"
-                        placeholder="Email"
-                        className="w-full rounded-md border border-stroke bg-transparent px-5 py-3 text-base text-body-color outline-none focus:border-primary focus-visible:shadow-none dark:border-dark-3 dark:text-white"
-                      />
-                      <span className="text-red-500 px-5">
-                        {errors.email && errors.email.message}
-                      </span>
-                    </div>
+                <form
+                  onSubmit={handleSubmit(handleRegister)}
+                  className="flex flex-col gap-3"
+                >
+                  <div className="flex flex-col items-start">
+                    <input
+                      {...register("email", {
+                        required: {
+                          value: true,
+                          message: "Email is required.",
+                        },
+                        pattern: {
+                          value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
+                          message: "Please enter a valid email address.",
+                        },
+                      })}
+                      type="email"
+                      placeholder="Email"
+                      className="w-full rounded-md border border-stroke bg-transparent px-5 py-3 text-base text-body-color outline-none focus:border-primary focus-visible:shadow-none dark:border-dark-3 dark:text-white"
+                    />
+                    <span className="text-red-500 px-5">
+                      {errors.email && errors.email.message}
+                    </span>
+                  </div>
 
-                    <div className="flex flex-col items-start">
-                      <input
-                        {...register("password", {
-                          required: {
-                            value: true,
-                            message: "Password is required.",
-                          },
-                          minLength: {
-                            value: 6,
-                            message:
-                              "Password must be at least 6 characters long.",
-                          },
-                        })}
-                        type="password"
-                        placeholder="Password"
-                        className="w-full rounded-md border border-stroke bg-transparent px-5 py-3 text-base text-body-color outline-none focus:border-primary focus-visible:shadow-none dark:border-dark-3 dark:text-white"
-                      />
-                      <span className="text-red-500 px-5">
-                        {errors.password && errors.password.message}
-                      </span>
-                    </div>
+                  <div className="flex flex-col items-start">
+                    <input
+                      {...register("password", {
+                        required: {
+                          value: true,
+                          message: "Password is required.",
+                        },
+                        pattern: {
+                          value:
+                            /^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{6,}$/,
+                          message:
+                            "Password must contain at least one uppercase, one lowercase, one number, and one special character.",
+                        },
+                        minLength: {
+                          value: 6,
+                          message:
+                            "Password must be at least 6 characters long.",
+                        },
+                      })}
+                      type="password"
+                      placeholder="Password"
+                      className="w-full rounded-md border border-stroke bg-transparent px-5 py-3 text-base text-body-color outline-none focus:border-primary focus-visible:shadow-none dark:border-dark-3 dark:text-white"
+                    />
+                    <span className="text-red-500 px-5">
+                      {errors.password && errors.password.message}
+                    </span>
+                  </div>
 
-                    <div className="flex flex-col items-start">
-                      <input
-                        {...register("name", {
-                          required: {
-                            value: true,
-                            message: "Username is required.",
-                          },
-                          minLength: {
-                            value: 4,
-                            message: "username is too short.",
-                          },
-                          maxLength: {
-                            value: 14,
-                            message: "username is too long.",
-                          },
-                        })}
-                        type="text"
-                        placeholder="User Name"
-                        className="w-full rounded-md border border-stroke bg-transparent px-5 py-3 text-base text-body-color outline-none focus:border-primary focus-visible:shadow-none dark:border-dark-3 dark:text-white"
-                      />
-                      <span className="text-red-500 px-5">
-                        {errors.name && errors.name.message}
-                      </span>
-                    </div>
+                  <div className="flex flex-col items-start">
+                    <input
+                      {...register("name", {
+                        required: {
+                          value: true,
+                          message: "Username is required.",
+                        },
+                        minLength: {
+                          value: 4,
+                          message: "username is too short.",
+                        },
+                        maxLength: {
+                          value: 14,
+                          message: "username is too long.",
+                        },
+                      })}
+                      type="text"
+                      placeholder="User Name"
+                      className="w-full rounded-md border border-stroke bg-transparent px-5 py-3 text-base text-body-color outline-none focus:border-primary focus-visible:shadow-none dark:border-dark-3 dark:text-white"
+                    />
+                    <span className="text-red-500 px-5">
+                      {errors.name && errors.name.message}
+                    </span>
+                  </div>
 
-                    <div className="flex flex-col items-start">
-                      <input
-                        {...register("photo")}
-                        type="text"
-                        placeholder="Photo URL"
-                        className="w-full rounded-md border border-stroke bg-transparent px-5 py-3 text-base text-body-color outline-none focus:border-primary focus-visible:shadow-none dark:border-dark-3 dark:text-white"
-                      />
-                      <span className="text-red-500 px-5">
-                        {errors.photo && errors.photo.message}
-                      </span>
-                    </div>
-                    <div className="mb-10">
-                      <input
-                        disabled={isSubmitting}
-                        type="submit"
-                        value="Sign Up"
-                        className={`${
-                          (isSubmitting &&
-                            "bg-zinc-600 border-black cursor-wait") ||
-                          "bg-zinc-800 border-primary cursor-pointer"
-                        } w-full rounded-md border  px-5 py-3 text-base font-medium text-white transition hover:bg-opacity-90`}
-                      />
-                    </div>
-                  </form>
+                  <div className="flex flex-col items-start">
+                    <input
+                      {...register("photo")}
+                      type="text"
+                      placeholder="Photo URL"
+                      className="w-full rounded-md border border-stroke bg-transparent px-5 py-3 text-base text-body-color outline-none focus:border-primary focus-visible:shadow-none dark:border-dark-3 dark:text-white"
+                    />
+                    <span className="text-red-500 px-5">
+                      {errors.photo && errors.photo.message}
+                    </span>
+                  </div>
+                  <div className="mb-10">
+                    <input
+                      disabled={isSubmitting}
+                      type="submit"
+                      value="Sign Up"
+                      className={`${
+                        (isSubmitting &&
+                          "bg-zinc-600 border-black cursor-wait") ||
+                        "bg-zinc-800 border-primary cursor-pointer"
+                      } w-full rounded-md border  px-5 py-3 text-base font-medium text-white transition hover:bg-opacity-90`}
+                    />
+                  </div>
+                  <ToastContainer
+                    position="bottom-right"
+                    autoClose={3000}
+                    hideProgressBar={false}
+                    newestOnTop
+                    closeOnClick
+                    rtl={false}
+                    pauseOnFocusLoss
+                    draggable
+                    pauseOnHover
+                    theme="colored"
+                    transition={Bounce}
+                  />
+                </form>
                 <p className="text-base text-body-color dark:text-dark-6">
                   <span className="pr-0.5">You have an account?</span>
                   <Link to="/login" className="text-primary hover:underline">

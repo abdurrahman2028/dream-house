@@ -4,21 +4,56 @@ import Header from "../../Shared/Header/Header";
 import FooterImage from "../../assets/2.jpg";
 import { FaGithub, FaGoogle, FaFacebook } from "react-icons/fa";
 import { authContext } from "../Provider/AuthProvider";
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
+import { useForm } from "react-hook-form";
+import { Bounce, ToastContainer, toast } from "react-toastify";
 
 const Login = () => {
-  const { loginwithgoogle, loginwithgithub, loginwithfacebook, userlogin} = useContext(authContext);
-  const nevigate = useNavigate();
+  const { loginwithgoogle, loginwithgithub, loginwithfacebook, userlogin } =
+    useContext(authContext);
+  const navigate = useNavigate();
   const handlelogin = (e) => {
     e.preventDefault();
     const form = new FormData(e.currentTarget);
     const email = form.get("email");
     const password = form.get("password");
-    login(email, password).then((res) => {
-      nevigate("/");
-      console.log("Login With Email : ", res);
+    userlogin(email, password)
+      .then((res) => {
+        nevigate("/");
+        console.log("Login With Email : ", res.user);
+      })
+      .catch((err) => console.log(err.message));
+  };
+
+  const delay = (time) => {
+    return new Promise((res, rej) => {
+      setTimeout(() => {
+        navigate("/login");
+        res();
+      }, time * 1000);
     });
   };
+  const onSubmit = async (data) => {
+    await delay(3);
+    console.log(data);
+  };
+
+  const {
+    register,
+    handleSubmit,
+    watch,
+    formState: { errors, isSubmitting },
+  } = useForm();
+
+  useEffect(() => {
+    if (errors.email) {
+      toast.error(errors.email.message);
+    }
+    if (errors.password) {
+      toast.error(errors.password.message);
+    }
+  });
+
   return (
     <div>
       <div className="fixed top-0 w-full z-10">
@@ -39,13 +74,64 @@ const Login = () => {
                     </h2>
                   </Link>
                 </div>
-                <form onSubmit={handlelogin}>
-                  <InputBox type="email" name="email" placeholder="Email" />
-                  <InputBox
-                    type="password"
-                    name="password"
-                    placeholder="Password"
-                  />
+                <div className="w-full flex">
+                  {isSubmitting && (
+                    <h1 className=" text-center rounded-full animate-pulse text-lg dark:bg-default-600">
+                      Loading...
+                    </h1>
+                  )}
+                </div>
+                <form
+                  className="flex flex-col gap-3"
+                  onSubmit={handleSubmit(handlelogin)}
+                >
+                  <div className="flex flex-col items-start">
+                    <input
+                      {...register("email", {
+                        required: {
+                          value: true,
+                          message: "Email is required.",
+                        },
+                        pattern: {
+                          value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
+                          message: "Please enter a valid email address.",
+                        },
+                      })}
+                      type="email"
+                      placeholder="Email"
+                      className="w-full rounded-md border border-stroke bg-transparent px-5 py-3 text-base text-body-color outline-none focus:border-primary focus-visible:shadow-none dark:border-dark-3 dark:text-white"
+                    />
+                    <span className="text-red-500 px-5">
+                      {errors.email && errors.email.message}
+                    </span>
+                  </div>
+                  <div className="flex flex-col items-start">
+                    <input
+                      {...register("password", {
+                        required: {
+                          value: true,
+                          message: "Password is required.",
+                        },
+                        pattern: {
+                          value:
+                            /^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{6,}$/,
+                          message:
+                            "Password must contain at least one uppercase, one lowercase, one number, and one special character.",
+                        },
+                        minLength: {
+                          value: 6,
+                          message:
+                            "Password must be at least 6 characters long.",
+                        },
+                      })}
+                      type="password"
+                      placeholder="Password"
+                      className="w-full rounded-md border border-stroke bg-transparent px-5 py-3 text-base text-body-color outline-none focus:border-primary focus-visible:shadow-none dark:border-dark-3 dark:text-white"
+                    />
+                    <span className="text-red-500 px-5">
+                      {errors.password && errors.password.message}
+                    </span>
+                  </div>
                   <div className="mb-10">
                     <input
                       type="submit"
@@ -53,6 +139,19 @@ const Login = () => {
                       className="w-full cursor-pointer rounded-md border border-primary bg-zinc-800 px-5 py-3 text-base font-medium text-white transition hover:bg-opacity-90"
                     />
                   </div>
+                  <ToastContainer
+                    position="bottom-right"
+                    autoClose={3000}
+                    hideProgressBar={false}
+                    newestOnTop
+                    closeOnClick
+                    rtl={false}
+                    pauseOnFocusLoss
+                    draggable
+                    pauseOnHover
+                    theme="colored"
+                    transition={Bounce}
+                  />
                 </form>
                 <p className="mb-6 text-base text-secondary-color dark:text-dark-7">
                   Connect With
@@ -332,16 +431,3 @@ const Login = () => {
 };
 
 export default Login;
-
-const InputBox = ({ type, placeholder, name }) => {
-  return (
-    <div className="mb-6">
-      <input
-        type={type}
-        placeholder={placeholder}
-        name={name}
-        className="w-full rounded-md border border-stroke bg-transparent px-5 py-3 text-base text-body-color outline-none focus:border-primary focus-visible:shadow-none dark:border-dark-3 dark:text-white"
-      />
-    </div>
-  );
-};
