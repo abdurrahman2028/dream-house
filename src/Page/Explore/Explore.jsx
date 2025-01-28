@@ -3,6 +3,7 @@ import "leaflet/dist/leaflet.css";
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 import Footer from "../../Shared/Footer/Footer";
 import FooterImage from "../../assets/5.jpg";
+import Forground from "./CardMove/Forground";
 
 const Explore = () => {
   const position = [23.7489, 90.3837];
@@ -11,7 +12,12 @@ const Explore = () => {
       <div className="">
         <Header></Header>
       </div>
-      <div className="px-0 py-10">
+
+      <div className=" z-20 overflow-x-hidden">
+        <Forground></Forground>
+      </div>
+
+      <div className="px-52 py-10">
         <MapContainer
           center={position}
           zoom={10}

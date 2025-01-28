@@ -31,16 +31,6 @@ const Header = () => {
       </li>
       <li>
         <NavLink
-          to="/service"
-          rel="noopener noreferrer"
-          id="nav-link"
-          className="flex items-center px-4 -mb-1 text-zinc-800 text-[14.5px] font-medium"
-        >
-          Service
-        </NavLink>
-      </li>
-      <li>
-        <NavLink
           to="/explore"
           rel="noopener noreferrer"
           id="nav-link"

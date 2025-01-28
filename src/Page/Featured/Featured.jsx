@@ -33,8 +33,19 @@ const Featured = () => {
       location: "Barishal, City in Bangladesh",
       close: true,
       items: { bed: 2, bath: 1, sqft: "986" },
-
       tag: { isOpen: true, title: "Download Now!", color: "green" },
+    },
+    {
+      id: 1,
+      img: Slider1,
+      title: "Docs is a web-based application",
+      description:
+        "Google Docs is a web-based application. It can be accessed with a personal Google account.",
+      price: "4,600",
+      location: "Dhaka, Capital of Bangladesh",
+      close: true,
+      items: { bed: 3, bath: 2, sqft: "1,634" },
+      tag: { isOpen: true, title: "Download Now!", color: "blue" },
     },
     {
       id: 3,
@@ -49,15 +60,27 @@ const Featured = () => {
       tag: { isOpen: true, title: "Download Now!", color: "blue" },
     },
     {
-      id: 4,
-      img: Slider4,
+      id: 5,
+      img: Slider5,
       title: "Docs is a web-based application",
       description:
         "Google Docs is a web-based application. It can be accessed with a personal Google account.",
-      price: "39,573",
-      location: "Barishal, City in Bangladesh",
+      price: "12,530",
+      location: "Dhaka, Capital of Bangladesh",
       close: true,
-      items: { bed: 5, bath: 3, sqft: "3,286" },
+      items: { bed: 2, bath: 2, sqft: "1,422" },
+      tag: { isOpen: true, title: "Download Now!", color: "blue" },
+    },
+    {
+      id: 3,
+      img: Slider3,
+      title: "Docs is a web-based application",
+      description:
+        "Google Docs is a web-based application. It can be accessed with a personal Google account.",
+      price: "17,550",
+      location: "Dhaka, Capital of Bangladesh",
+      close: true,
+      items: { bed: 1, bath: 0, sqft: "486" },
       tag: { isOpen: true, title: "Download Now!", color: "blue" },
     },
     {
@@ -71,6 +94,18 @@ const Featured = () => {
       close: true,
       items: { bed: 2, bath: 2, sqft: "1,422" },
       tag: { isOpen: true, title: "Download Now!", color: "blue" },
+    },
+    {
+      id: 2,
+      img: Slider2,
+      title: "Docs is a web-based application",
+      description:
+        "Google Docs is a web-based application. It can be accessed with a personal Google account.",
+      price: "23,860",
+      location: "Barishal, City in Bangladesh",
+      close: true,
+      items: { bed: 2, bath: 1, sqft: "986" },
+      tag: { isOpen: true, title: "Download Now!", color: "green" },
     },
   ];
   return (
