@@ -21,24 +21,30 @@ const Router = () => {
       children: [
         {
           path: "/",
+          loader: () => fetch("https://api2-kohl.vercel.app/allhouses"),
           element: <Home></Home>,
         },
         {
-          path: "/details",
-          element: <Private><Details></Details></Private>,
-        },
-        {
           path: "/featured",
-          
+          loader: () => fetch("https://api2-kohl.vercel.app/allhouses"),
           element: <Featured></Featured>,
         },
         {
-            path: "/explore",
-            element: <Explore></Explore>,
+          path: "/details/:id",
+          loader: ({ params }) => fetch(`https://api2-kohl.vercel.app/allhouses/${params.id}`),
+          element: (
+            <Private>
+              <Details></Details>
+            </Private>
+          ),
         },
         {
-            path: "/contact",
-            element: <Contact></Contact>,
+          path: "/explore",
+          element: <Explore></Explore>,
+        },
+        {
+          path: "/contact",
+          element: <Contact></Contact>,
         },
         {
           path: "/login",
@@ -50,10 +56,14 @@ const Router = () => {
         },
         {
           path: "/profile",
-          element: <Private><Profile></Profile></Private>,
+          element: (
+            <Private>
+              <Profile></Profile>
+            </Private>
+          ),
         },
-      ]
-    }
+      ],
+    },
   ]);
   return <RouterProvider router={router}></RouterProvider>;
 };

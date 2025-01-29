@@ -9,7 +9,7 @@ const Explore = () => {
   const position = [23.7489, 90.3837];
   return (
     <div>
-      <div className="">
+      <div className="fixed z-20 w-full">
         <Header></Header>
       </div>
 
@@ -17,7 +17,7 @@ const Explore = () => {
         <Slider></Slider>
       </div>
 
-      <div className="px-52 py-10">
+      <div className="px-10 md:px-52 py-10 -z-40">
         <MapContainer
           center={position}
           zoom={10}
@@ -34,7 +34,7 @@ const Explore = () => {
 
       <div className="">
         <div
-          className="relative bg-cover bg-no-repeat lg:bg-[center_top_-22rem]"
+          className="relative bg-cover bg-no-repeat 2xl:bg-[center_top_-20rem] lg:bg-[center_top_-30rem]"
           style={{
             backgroundImage: `url(${FooterImage})`,
           }}

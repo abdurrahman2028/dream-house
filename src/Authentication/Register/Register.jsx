@@ -2,11 +2,12 @@ import { Link, useNavigate } from "react-router-dom";
 import Footer from "../../Shared/Footer/Footer";
 import FooterImage from "../../assets/3.jpg";
 import Header from "../../Shared/Header/Header";
-import { useContext, useEffect } from "react";
+import { useContext, useEffect, useState } from "react";
 import { authContext } from "../Provider/AuthProvider";
 import { updateProfile } from "firebase/auth";
 import { useForm } from "react-hook-form";
 import { Bounce, ToastContainer, toast } from "react-toastify";
+import { FaEye, FaEyeSlash } from "react-icons/fa";
 
 const Register = () => {
   const { userregister } = useContext(authContext);
@@ -58,6 +59,7 @@ const Register = () => {
     }
   }, [errors.name, errors.email, errors.password]);
 
+    const [showPassword, setShowPassword] = useState(false);
   return (
     <div>
       <div className="fixed top-0 w-full z-10">
@@ -110,7 +112,7 @@ const Register = () => {
                     </span>
                   </div>
 
-                  <div className="flex flex-col items-start">
+                  <div className="flex flex-col items-start relative">
                     <input
                       {...register("password", {
                         required: {
@@ -129,13 +131,19 @@ const Register = () => {
                             "Password must be at least 6 characters long.",
                         },
                       })}
-                      type="password"
+                      type={showPassword ? "text" : "password"}
                       placeholder="Password"
                       className="w-full rounded-md border border-stroke bg-transparent px-5 py-3 text-base text-body-color outline-none focus:border-primary focus-visible:shadow-none dark:border-dark-3 dark:text-white"
                     />
                     <span className="text-red-500 px-5">
                       {errors.password && errors.password.message}
                     </span>
+                    <div
+                      className="absolute right-3 top-3 cursor-pointer"
+                      onClick={() => setShowPassword(!showPassword)}
+                    >
+                      {showPassword ? <FaEyeSlash /> : <FaEye />}{" "}
+                    </div>
                   </div>
 
                   <div className="flex flex-col items-start">

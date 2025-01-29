@@ -4,6 +4,8 @@ import FooterImage from "../../assets/Footer.jpg";
 import Footer from "../../Shared/Footer/Footer";
 import { useEffect, useRef } from "react";
 import { animate } from "framer-motion";
+import { useLoaderData } from "react-router-dom";
+import HomeCard from "./HomeCard/HomeCard";
 
 const Home = () => {
   const counter1 = useRef(null);
@@ -28,10 +30,12 @@ const Home = () => {
     });
   }, []);
 
+  const alldata = useLoaderData();
+  console.log(alldata);
   return (
-    <div className="flex flex-col gap-7">
+    <div className="flex flex-col justify-center gap-7">
       <div
-        className="h-screen bg-cover bg-no-repeat lg:bg-[center_top_-22rem]"
+        className="h-screen bg-cover bg-no-repeat lg:bg-[center_top_-22rem] bg-[center_left_-12rem] md:bg-[center_left_-0rem]"
         style={{
           backgroundImage: `url(${HeroImage})`,
         }}
@@ -50,7 +54,7 @@ const Home = () => {
             </h1>
           </div>
           <div className="lg:px-52 lg:pt-96 md:px-20 md:pt-20 px-15 pb-30 text-zinc-100 flex items-end justify-between gap-3">
-            <div className="">
+            <div className="hidden md:block">
               <h6 className="text-base">
                 Where every corner whispers serenity. Our homes are
               </h6>
@@ -62,12 +66,19 @@ const Home = () => {
               </h6>
             </div>
             <div className="text-end flex flex-col gap-1">
-              <h6 className="text-">Poqutot Green Canyon</h6>
+              <h6 className="text-left">Poqutot Green Canyon</h6>
               <h2 className="text-4xl">$700.99/day</h2>
             </div>
           </div>
         </div>
         <div className="absolute bottom-0 blur-lg w-full h-10 bg-zinc-300/50"></div>
+      </div>
+
+      <h2 className="text-[40px] font-semibold leading-10 text-center pt-10">Special Offer</h2>
+      <div className="flex items-center justify-center flex-wrap gap-8 w-full md:px-52 2xl:px-52">
+        {alldata.slice(0, 4).map((data) => (
+          <HomeCard data={data}></HomeCard>
+        ))}
       </div>
 
       <div className="lg:px-52 py-10 flex flex-col items-center lg: text-end">
@@ -77,7 +88,7 @@ const Home = () => {
             <h2 className="text-5xl">properties</h2>
           </div>
           <div className="lg:text-end text-left">
-            <h4 className="mb-7 text-zinc-500">
+            <h4 className="mb-7 text-zinc-500 ">
               With decades of experience and a commitment to personalized
               service, we ensure a seamless journey to finding your dream
               property or selling your current one. With decades of experience
@@ -174,7 +185,7 @@ const Home = () => {
 
       <div className="">
         <div
-          className="relative bg-cover bg-no-repeat lg:bg-[center_top_-22rem]"
+          className="relative bg-cover bg-no-repeat 2xl:bg-[center_top_-20rem] lg:bg-[center_top_-30rem]"
           style={{
             backgroundImage: `url(${FooterImage})`,
           }}

@@ -22,7 +22,7 @@ import "swiper/swiper-bundle.css";
 
 const Slider = () => {
   return (
-    <div className="flex justify-center items-center w-full px-52 py-10">
+    <div className="flex justify-center items-center w-full px-10 md:px-52 pt-22">
       <Swiper
         modules={[Navigation, Pagination, Scrollbar, A11y, EffectFade]}
         effect="flip"

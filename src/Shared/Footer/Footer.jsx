@@ -15,7 +15,7 @@ const Footer = () => {
             </span>
           </a>
         </div>
-        <div className="grid grid-cols-2 text-sm gap-x-3 gap-y-8 lg:w-2/3 sm:grid-cols-4">
+        <div className="grid grid-cols-2 overflow-x-hidden 2xl:overflow-x-visible text-sm md:gap-x-36 lg:gap-x-52 gap-y-8 lg:w-2/3 sm:grid-cols-4">
           <div className="space-y-3 font-medium">
             <h3 className="tracking-wide uppercase dark:text-gray-900  text-[16px] font-bold">
               Product
@@ -81,7 +81,7 @@ const Footer = () => {
             </ul>
           </div>
           <div className="space-y-3 font-semibold">
-            <div className="uppercase dark:text-gray-900 text-[16px]">Social media</div>
+            <div className="flex flex-row gap-1 text-left uppercase dark:text-gray-900 text-[16px]"><h2>Social</h2> <h2>media</h2></div>
             <div className="flex justify-start space-x-3">
               <a
                 rel="noopener noreferrer"

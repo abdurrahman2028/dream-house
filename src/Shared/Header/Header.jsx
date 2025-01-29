@@ -96,7 +96,7 @@ const Header = () => {
                 className="btn btn-ghost btn-circle avatar"
               >
                 <div className="w-40 rounded-full">
-                  <img alt="Logo" src={user?.photoURL || userLogo} />
+                  <img alt="Logo" title={user.displayName} src={user?.photoURL || userLogo} />
                 </div>
               </div>
               <ul
