@@ -1,9 +1,6 @@
 import { Link } from "react-router-dom";
 import {
-  FaBath,
-  FaBed,
   FaWarehouse,
-  FaDollarSign,
   FaExternalLinkSquareAlt,
 } from "react-icons/fa";
 

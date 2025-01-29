@@ -11,6 +11,7 @@ import { useLoaderData } from "react-router-dom";
 
 const Featured = () => {
   const alldata = useLoaderData()
+  
   return (
     <div>
       <div className="fixed w-full z-10">

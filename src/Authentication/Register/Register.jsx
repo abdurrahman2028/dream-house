@@ -15,14 +15,17 @@ const Register = () => {
 
   const handleRegister = (data) => {
     const { name, photo, email, password } = data;
-    userregister(email, password).then((res) => {
-      navigate("/login");
+    userregister(email, password)
+    .then((res) => {
+      navigate("/");
       updateProfile(res.user, {
         displayName: name,
         photoURL: photo,
       });
+      toast.success('Your Sign up has been successfully!');
       console.log("Register With Email : ", res);
-    });
+    })
+    .catch((error)=>toast.error(`${error.message === 'Firebase: Error (auth/email-already-in-use).' ? 'You are already a user!' : error.message}`))
   };
   const {
     register,
@@ -34,7 +37,7 @@ const Register = () => {
   const delay = (time) => {
     return new Promise((res, rej) => {
       setTimeout(() => {
-        navigate("/login");
+        navigate("/");
         res();
       }, time * 1000);
     });

@@ -19,16 +19,16 @@ const Login = () => {
     useContext(authContext);
   const navigate = useNavigate();
   const handlelogin = (e) => {
-    e.preventDefault();
     const form = new FormData(e.currentTarget);
     const email = form.get("email");
     const password = form.get("password");
     userlogin(email, password)
       .then((res) => {
+        toast.success('Your Sign In has been successfully!');
         navigate("/");
         console.log("Login With Email : ", res.user);
       })
-      .catch((err) => console.log(err.message));
+      .catch((err) => toast.error(err.message));
   };
 
   const delay = (time) => {

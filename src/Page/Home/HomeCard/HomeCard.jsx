@@ -1,8 +1,3 @@
-import {
-  FaDollarSign,
-  FaExternalLinkSquareAlt,
-  FaWarehouse,
-} from "react-icons/fa";
 import { Link } from "react-router-dom";
 
 const HomeCard = ({ data }) => {
