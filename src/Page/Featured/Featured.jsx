@@ -8,10 +8,13 @@ import moment from "moment/moment";
 import Footer from "../../Shared/Footer/Footer";
 import FooterImage from "../../assets/Slider1.jpg";
 import { useLoaderData } from "react-router-dom";
+import { FaEye, FaEyeSlash } from "react-icons/fa";
+import { useState } from "react";
 
 const Featured = () => {
-  const alldata = useLoaderData()
-  
+  const alldata = useLoaderData();
+  const [showAll, setShowAll] = useState(false);
+
   return (
     <div>
       <div className="fixed w-full z-10">
@@ -25,10 +28,26 @@ const Featured = () => {
           </h2>
         </div>
         <div className="w-full lg:px-52 px-20 flex flex-wrap items-center justify-center gap-10 py-10">
-          {alldata.map((data, index) => (
-            <Card data={data} key={index} />
-          ))}
+           
+          <div className={`${showAll ? "" : "hidden"} flex flex-wrap items-center justify-center gap-10`}>
+            {alldata.slice(0, 8).map((data, index) => (
+              <Card data={data} key={index} />
+            ))}
+          </div>
+          <div className={`${showAll ? "hidden" : "" } flex flex-wrap items-center justify-center gap-10`}>
+            {alldata.slice(0).map((data, index) => (
+              <Card data={data} key={index} />
+            ))}
+          </div>
+          
         </div>
+      </div>
+
+      <div
+        className=" flex items-center justify-center cursor-pointer pb-20"
+        onClick={() => setShowAll(!showAll)}
+      >
+        <button className="btn">{showAll ? "Show all" : "Show less"}</button>
       </div>
 
       <div className="">
